@@ -4,17 +4,17 @@
 
 /* ---- Matrix / Particle Canvas Background ---- */
 const canvas = document.getElementById('matrix-canvas');
-const ctx    = canvas.getContext('2d');
+const ctx = canvas.getContext('2d');
 
 function resizeCanvas() {
-  canvas.width  = window.innerWidth;
+  canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 }
 resizeCanvas();
 window.addEventListener('resize', resizeCanvas);
 
 const chars = '01アイウエオカキクケコサシスセソタチツテト>#$%@!?';
-const cols  = Math.floor(canvas.width / 18);
+const cols = Math.floor(canvas.width / 18);
 const drops = Array(cols).fill(1);
 
 function drawMatrix() {
@@ -69,15 +69,15 @@ navLinks.forEach(link => {
 
 /* ---- Typed text animation ---- */
 const typedEl = document.getElementById('typed-text');
-const roles   = [
-  'Cybersecurity Analyst',
-  'Threat Hunter',
-  'Penetration Tester',
+const roles = [
+  'IT Operations & Security Analyst',
+  'Endpoint Security Specialist',
+  'Microsoft 365 Administrator',
   'SOC Analyst',
-  'Security Researcher'
+  'Vulnerability Management Expert'
 ];
-let roleIdx  = 0;
-let charIdx  = 0;
+let roleIdx = 0;
+let charIdx = 0;
 let deleting = false;
 
 function typeLoop() {
@@ -94,7 +94,7 @@ function typeLoop() {
     charIdx--;
     if (charIdx === 0) {
       deleting = false;
-      roleIdx  = (roleIdx + 1) % roles.length;
+      roleIdx = (roleIdx + 1) % roles.length;
     }
   }
   setTimeout(typeLoop, deleting ? 60 : 90);
@@ -105,11 +105,11 @@ typeLoop();
 function animateCounter(el) {
   const target = parseInt(el.dataset.target, 10);
   const duration = 1800;
-  const start    = performance.now();
+  const start = performance.now();
   function step(now) {
-    const elapsed  = now - start;
+    const elapsed = now - start;
     const progress = Math.min(elapsed / duration, 1);
-    const eased    = 1 - Math.pow(1 - progress, 3);
+    const eased = 1 - Math.pow(1 - progress, 3);
     el.textContent = Math.floor(eased * target);
     if (progress < 1) requestAnimationFrame(step);
     else el.textContent = target;
@@ -168,13 +168,13 @@ function addReveal(selector, delayStep = 100) {
     el.style.transitionDelay = `${i * delayStep}ms`;
   });
 }
-addReveal('.about-card',      100);
-addReveal('.timeline-item',   120);
-addReveal('.project-card',    100);
-addReveal('.cert-card',       100);
-addReveal('.skill-category',  100);
-addReveal('.contact-item',     80);
-addReveal('.section-header',    0);
+addReveal('.about-card', 100);
+addReveal('.timeline-item', 120);
+addReveal('.project-card', 100);
+addReveal('.cert-card', 100);
+addReveal('.skill-category', 100);
+addReveal('.contact-item', 80);
+addReveal('.section-header', 0);
 
 // Re-observe after adding reveal classes
 revealEls.forEach(el => revealObserver.unobserve(el));
@@ -202,7 +202,7 @@ contactForm.addEventListener('submit', (e) => {
 
 /* ---- Smooth scroll for anchor links ---- */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
+  anchor.addEventListener('click', function (e) {
     const target = document.querySelector(this.getAttribute('href'));
     if (target) {
       e.preventDefault();
@@ -224,6 +224,6 @@ if (window.matchMedia('(min-width: 900px)').matches) {
   document.body.appendChild(glow);
   document.addEventListener('mousemove', (e) => {
     glow.style.left = e.clientX + 'px';
-    glow.style.top  = e.clientY + 'px';
+    glow.style.top = e.clientY + 'px';
   });
 }
